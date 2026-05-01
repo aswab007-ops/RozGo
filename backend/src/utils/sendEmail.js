@@ -27,8 +27,10 @@ const sendEmail = async ({ to, subject, html }) => {
     });
   }
 
+  const fromEmail = process.env.SMTP_USER || 'noreply@rozgo.com';
+
   const info = await transporter.sendMail({
-    from: '"RozGo Admin" <noreply@rozgo.com>',
+    from: `"RozGo Admin" <${fromEmail}>`,
     to,
     subject,
     html,
