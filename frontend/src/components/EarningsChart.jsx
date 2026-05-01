@@ -8,7 +8,7 @@ export default function EarningsChart({ monthlyBreakdown }) {
   const data = {
     labels: monthlyBreakdown.map(m => m.label),
     datasets: [{
-      label: 'Approved Earnings (₹)',
+      label: 'Approved Earnings (Rs)',
       data: monthlyBreakdown.map(m => m.total),
       backgroundColor: 'rgba(139,92,246,0.5)',
       borderColor: 'rgba(139,92,246,1)',
@@ -30,12 +30,12 @@ export default function EarningsChart({ monthlyBreakdown }) {
         borderWidth: 1,
         titleColor: '#f1f5f9',
         bodyColor: '#94a3b8',
-        callbacks: { label: ctx => ` ₹${ctx.parsed.y.toLocaleString()}` }
+        callbacks: { label: ctx => ` Rs ${ctx.parsed.y.toLocaleString()}` }
       }
     },
     scales: {
       x: { grid: { color: 'rgba(255,255,255,0.04)' }, ticks: { color: '#64748b', font: { size: 12 } } },
-      y: { grid: { color: 'rgba(255,255,255,0.04)' }, ticks: { color: '#64748b', font: { size: 12 }, callback: v => `₹${v.toLocaleString()}` }, beginAtZero: true }
+      y: { grid: { color: 'rgba(255,255,255,0.04)' }, ticks: { color: '#64748b', font: { size: 12 }, callback: v => `Rs ${v.toLocaleString()}` }, beginAtZero: true }
     }
   }
 

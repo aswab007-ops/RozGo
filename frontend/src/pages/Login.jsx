@@ -33,7 +33,7 @@ export default function Login() {
             <TrendingUp size={22} className="text-white"/>
           </div>
           <h1 className="text-2xl font-bold text-white">Welcome back</h1>
-          <p className="text-slate-400 text-sm mt-1">Sign in to your GigTracker account</p>
+          <p className="text-slate-400 text-sm mt-1">Sign in to your RozGo account</p>
         </div>
 
         <div className="card">

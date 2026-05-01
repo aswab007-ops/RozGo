@@ -31,18 +31,18 @@ export default function Dashboard() {
       const doc = new jsPDF()
       doc.setFontSize(18)
       doc.setTextColor(40)
-      doc.text('GigTracker — Income Summary', 14, 22)
+      doc.text('RozGo — Income Summary', 14, 22)
       doc.setFontSize(11)
       doc.setTextColor(100)
       doc.text(`Worker: ${user.name}  |  Generated: ${new Date().toLocaleDateString()}`, 14, 30)
 
       autoTable(doc, {
         startY: 38,
-        head: [['Date', 'Source', 'Amount (₹)', 'Status']],
+        head: [['Date', 'Source', 'Amount (Rs)', 'Status']],
         body: data.earnings.map(e => [
           new Date(e.date).toLocaleDateString('en-IN'),
           e.source,
-          `₹${e.amount.toLocaleString()}`,
+          `Rs ${e.amount.toLocaleString()}`,
           e.status.toUpperCase()
         ]),
         styles: { fontSize: 10 },
@@ -50,8 +50,8 @@ export default function Dashboard() {
       })
 
       const total = data.earnings.filter(e => e.status === 'approved').reduce((s, e) => s + e.amount, 0)
-      doc.text(`Total Approved: ₹${total.toLocaleString()}`, 14, doc.lastAutoTable.finalY + 10)
-      doc.save(`GigTracker_${user.name}_${Date.now()}.pdf`)
+      doc.text(`Total Approved: Rs ${total.toLocaleString()}`, 14, doc.lastAutoTable.finalY + 10)
+      doc.save(`RozGo_${user.name}_${Date.now()}.pdf`)
       toast.success('PDF downloaded!')
     } catch { toast.error('Failed to generate PDF') }
   }

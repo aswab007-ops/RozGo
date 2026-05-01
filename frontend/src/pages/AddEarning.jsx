@@ -54,7 +54,7 @@ export default function AddEarning() {
             {/* Amount */}
             <div className="grid sm:grid-cols-2 gap-4">
               <div>
-                <label className="text-xs font-medium text-slate-400 mb-1.5 block">Amount (₹) *</label>
+                <label className="text-xs font-medium text-slate-400 mb-1.5 block">Amount (Rs) *</label>
                 <div className="relative">
                   <DollarSign size={16} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-500"/>
                   <input id="earn-amount" type="number" min="1" step="0.01" placeholder="0.00" required

@@ -43,7 +43,7 @@ const register = async (req, res) => {
     try {
       await sendEmail({
         to: user.email,
-        subject: 'GigTracker - Verify Your Email',
+        subject: 'RozGo - Verify Your Email',
         html: message,
       });
 

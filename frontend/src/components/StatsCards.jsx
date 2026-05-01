@@ -1,8 +1,8 @@
 import { TrendingUp, Calendar, CheckCircle, Clock, XCircle } from 'lucide-react'
 
 const cards = [
-  { key: 'totalEarnings',  label: 'Total Approved',   icon: TrendingUp,    color: 'violet', fmt: v => `₹${Number(v).toLocaleString()}` },
-  { key: 'monthlyEarnings',label: 'This Month',        icon: Calendar,      color: 'cyan',   fmt: v => `₹${Number(v).toLocaleString()}` },
+  { key: 'totalEarnings',  label: 'Total Approved',   icon: TrendingUp,    color: 'violet', fmt: v => `Rs ${Number(v).toLocaleString()}` },
+  { key: 'monthlyEarnings',label: 'This Month',        icon: Calendar,      color: 'cyan',   fmt: v => `Rs ${Number(v).toLocaleString()}` },
   { key: 'approvedCount',  label: 'Approved Entries',  icon: CheckCircle,   color: 'emerald',fmt: v => v },
   { key: 'pendingCount',   label: 'Pending Review',    icon: Clock,         color: 'amber',  fmt: v => v },
 ]

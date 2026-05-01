@@ -28,7 +28,7 @@ function AdminCard({ earning, onReview }) {
             <DollarSign size={18} className="text-violet-400"/>
           </div>
           <div>
-            <p className="text-xl font-bold text-white">₹{earning.amount.toLocaleString()}</p>
+            <p className="text-xl font-bold text-white">Rs {earning.amount.toLocaleString()}</p>
             <p className="text-sm text-slate-400 mt-0.5">{earning.source}</p>
             <div className="flex flex-wrap gap-3 mt-1.5">
               <span className="flex items-center gap-1 text-xs text-slate-500"><User size={11}/>{earning.userId?.name || 'Unknown'} ({earning.userId?.email})</span>
@@ -132,7 +132,7 @@ export default function AdminPanel() {
             { label: 'Total Entries',    val: stats.total,    color: 'violet' },
             { label: 'Pending',          val: stats.pending,  color: 'amber'  },
             { label: 'Approved',         val: stats.approved, color: 'emerald'},
-            { label: 'Total Approved ₹', val: `₹${stats.totalAmount?.toLocaleString() || 0}`, color: 'cyan' },
+            { label: 'Total Approved Rs', val: `Rs ${stats.totalAmount?.toLocaleString() || 0}`, color: 'cyan' },
           ].map(({ label, val, color }) => (
             <div key={label} className="card text-center">
               <p className={`text-2xl font-bold text-${color}-400 mb-1`}>{val}</p>

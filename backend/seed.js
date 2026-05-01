@@ -7,7 +7,7 @@ const seedAdmin = async () => {
   try {
     await connectDB();
 
-    const adminEmail = process.env.ADMIN_EMAIL || 'admin@gigtracker.com';
+    const adminEmail = process.env.ADMIN_EMAIL || 'admin@rozgo.com';
     const adminPassword = process.env.ADMIN_PASSWORD || 'admin123';
 
     const existingAdmin = await User.findOne({ role: 'admin' });

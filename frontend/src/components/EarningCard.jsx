@@ -19,7 +19,7 @@ export default function EarningCard({ earning, onDelete }) {
             <DollarSign size={18} className="text-violet-400"/>
           </div>
           <div>
-            <p className="text-2xl font-bold text-white">₹{earning.amount.toLocaleString()}</p>
+            <p className="text-2xl font-bold text-white">Rs {earning.amount.toLocaleString()}</p>
             <div className="flex flex-wrap items-center gap-2 mt-1">
               <span className="flex items-center gap-1 text-xs text-slate-400">
                 <Tag size={11}/>{earning.source}
