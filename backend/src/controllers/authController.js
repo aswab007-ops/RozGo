@@ -51,8 +51,8 @@ const register = async (req, res) => {
         message: 'Registration successful! Please check your email to verify your account before logging in.',
       });
     } catch (err) {
-      console.error(err);
-      res.status(500).json({ message: 'Error sending verification email' });
+      console.error('SMTP Error details:', err);
+      res.status(500).json({ message: 'Error sending verification email: ' + (err.message || 'Unknown SMTP error') });
     }
 
   } catch (error) {
