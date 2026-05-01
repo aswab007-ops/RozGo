@@ -86,7 +86,7 @@ const verifyEmail = async (req, res) => {
 
     // If they are already verified, handle gracefully (solves React strict mode double-fire)
     if (user.isVerified) {
-      return res.status(200).json({ message: 'Email is already verified. You can log in.' });
+      return res.status(200).json({ message: 'Email verified successfully! You can now log in.' });
     }
 
     // Ensure the token matches perfectly
@@ -98,7 +98,7 @@ const verifyEmail = async (req, res) => {
     user.verificationToken = undefined;
     await user.save();
 
-    res.status(200).json({ message: 'Email verified successfully. You can now log in.' });
+    res.status(200).json({ message: 'Email verified successfully! You can now log in.' });
   } catch (error) {
     console.error('Verify Email Error:', error);
     res.status(500).json({ message: 'Server error during verification' });
