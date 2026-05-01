@@ -8,11 +8,26 @@ const authRoutes = require('./src/routes/authRoutes');
 const earningsRoutes = require('./src/routes/earningsRoutes');
 const adminRoutes = require('./src/routes/adminRoutes');
 
-connectDB();
-
 const app = express();
 
-app.use(cors({ origin: process.env.CLIENT_URL || 'http://localhost:5173', credentials: true }));
+// Cached DB connection for serverless (Vercel)
+let isConnected = false;
+app.use(async (req, res, next) => {
+  if (!isConnected) {
+    try {
+      await connectDB();
+      isConnected = true;
+    } catch (err) {
+      return res.status(500).json({ message: 'Database connection failed' });
+    }
+  }
+  next();
+});
+
+app.use(cors({
+  origin: process.env.CLIENT_URL || 'http://localhost:5173',
+  credentials: true
+}));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
