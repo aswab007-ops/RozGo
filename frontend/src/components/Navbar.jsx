@@ -35,7 +35,7 @@ export default function Navbar() {
         <div className="hidden md:flex items-center gap-1">
           {user ? (
             <>
-              {navLink('/dashboard', 'Dashboard', LayoutDashboard)}
+              {user.role === 'worker' && navLink('/dashboard', 'Dashboard', LayoutDashboard)}
               {user.role === 'worker' && navLink('/add-earning', 'Add Earning', PlusCircle)}
               {user.role === 'worker' && navLink('/earnings', 'My Earnings', List)}
               {user.role === 'admin' && navLink('/admin', 'Admin Panel', ShieldCheck)}
@@ -69,7 +69,7 @@ export default function Navbar() {
         <div className="md:hidden border-t border-white/6 px-4 py-4 flex flex-col gap-2 glass-dark animate-fade-in">
           {user ? (
             <>
-              {navLink('/dashboard', 'Dashboard', LayoutDashboard)}
+              {user.role === 'worker' && navLink('/dashboard', 'Dashboard', LayoutDashboard)}
               {user.role === 'worker' && navLink('/add-earning', 'Add Earning', PlusCircle)}
               {user.role === 'worker' && navLink('/earnings', 'My Earnings', List)}
               {user.role === 'admin' && navLink('/admin', 'Admin Panel', ShieldCheck)}

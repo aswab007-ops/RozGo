@@ -10,8 +10,7 @@ const userSchema = new mongoose.Schema({
   password: { type: String, required: true, minlength: 6, select: false },
   role: { type: String, enum: ['worker', 'admin'], default: 'worker' },
   isVerified: { type: Boolean, default: false },
-  verificationToken: { type: String },
-  verificationExpires: { type: Date }
+  verificationToken: { type: String }
 }, { timestamps: true });
 
 userSchema.pre('save', async function (next) {
