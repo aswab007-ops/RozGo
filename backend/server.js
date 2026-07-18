@@ -10,20 +10,6 @@ const adminRoutes = require('./src/routes/adminRoutes');
 
 const app = express();
 
-// Cached DB connection for serverless (Vercel)
-let isConnected = false;
-app.use(async (req, res, next) => {
-  if (!isConnected) {
-    try {
-      await connectDB();
-      isConnected = true;
-    } catch (err) {
-      return res.status(500).json({ message: 'Database connection failed' });
-    }
-  }
-  next();
-});
-
 const allowedOrigins = [
   'http://localhost:5173',
   'http://localhost:3000',
@@ -47,11 +33,25 @@ app.use(cors({
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+app.get('/api/health', (req, res) => res.json({ status: 'ok', message: 'Gig Income Tracker API running' }));
+
+// Cached DB connection for serverless (Vercel)
+let isConnected = false;
+app.use(async (req, res, next) => {
+  if (isConnected) return next();
+
+  try {
+    await connectDB();
+    isConnected = true;
+    next();
+  } catch (err) {
+    res.status(500).json({ message: 'Database connection failed' });
+  }
+});
+
 app.use('/api/auth', authRoutes);
 app.use('/api/earnings', earningsRoutes);
 app.use('/api/admin', adminRoutes);
-
-app.get('/api/health', (req, res) => res.json({ status: 'ok', message: 'Gig Income Tracker API running' }));
 
 app.use((err, req, res, next) => {
   console.error(err.stack);
@@ -59,7 +59,7 @@ app.use((err, req, res, next) => {
 });
 
 const PORT = process.env.PORT || 5000;
-if (process.env.NODE_ENV !== 'production') {
+if (require.main === module) {
   app.listen(PORT, () => console.log(`🚀 Server running on http://localhost:${PORT}`));
 }
 
