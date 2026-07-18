@@ -33,9 +33,13 @@
       .card { fill: rgba(15,23,42,.72); stroke: rgba(226,232,240,.18); }
       .glass { fill: rgba(255,255,255,.045); }
       .sweep { animation: sweep 5.6s ease-in-out infinite; }
+      .float-approved { animation: floatApproved 7s ease-in-out infinite; transform-box: fill-box; transform-origin: center; }
+      .float-pending { animation: floatPending 8.5s ease-in-out infinite; transform-box: fill-box; transform-origin: center; }
       .orb1 { animation: orb1 14s ease-in-out infinite alternate; }
       .orb2 { animation: orb2 17s ease-in-out infinite alternate; }
       @keyframes sweep { 0%,25% { transform: translateX(-360px) skewX(-18deg); opacity:0; } 45% { opacity:.65; } 72%,100% { transform: translateX(1180px) skewX(-18deg); opacity:0; } }
+      @keyframes floatApproved { 0%,100% { transform: translate(0,0) rotate(-1deg); } 50% { transform: translate(10px,-12px) rotate(1.3deg); } }
+      @keyframes floatPending { 0%,100% { transform: translate(0,0) rotate(1deg); } 50% { transform: translate(-12px,10px) rotate(-1.2deg); } }
       @keyframes orb1 { from { transform: translate(-20px,-6px) scale(1); } to { transform: translate(34px,22px) scale(1.08); } }
       @keyframes orb2 { from { transform: translate(28px,22px) scale(.98); } to { transform: translate(-28px,-14px) scale(1.06); } }
     </style>
@@ -51,14 +55,14 @@
   <text class="sub" x="88" y="226">Verified income tracking for gig workers.</text>
   <text class="sub" x="88" y="266">Submit proof - Admin verifies - Dashboard updates.</text>
 
-  <g>
+  <g class="float-approved">
     <rect class="card" x="706" y="70" width="330" height="118" rx="24"/>
     <text class="small" x="736" y="112">APPROVED BALANCE</text>
     <text class="sub" x="736" y="154" style="font-size:34px;fill:#F8FAFC">Rs 124,800</text>
     <circle cx="994" cy="108" r="10" fill="#34D399" filter="url(#glow)"/>
   </g>
 
-  <g>
+  <g class="float-pending">
     <rect class="card" x="666" y="236" width="408" height="100" rx="23"/>
     <text class="small" x="696" y="276">PENDING REVIEW</text>
     <text class="sub" x="696" y="310" style="font-size:23px;fill:#F8FAFC">Delivery shift - proof uploaded</text>
