@@ -1,6 +1,8 @@
-import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
+import { BrowserRouter, Routes, Route, Navigate, useLocation } from 'react-router-dom'
 import { Toaster } from 'react-hot-toast'
+import { AnimatePresence } from 'framer-motion'
 import { AuthProvider, useAuth } from './context/AuthContext'
+import { AmbientBackground, PageMotion } from './components/MotionFX'
 import Navbar from './components/Navbar'
 import Landing from './pages/Landing'
 import Login from './pages/Login'
@@ -35,21 +37,28 @@ const AdminRoute = ({ children }) => {
 }
 
 function AppRoutes() {
+  const location = useLocation()
+
   return (
     <>
+      <AmbientBackground />
       <Navbar />
-      <Routes>
-        <Route path="/" element={<Landing />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/admin/login" element={<AdminLogin />} />
-        <Route path="/verify-email/:token" element={<VerifyEmail />} />
-        <Route path="/register" element={<Register />} />
-        <Route path="/dashboard" element={<PrivateRoute><Dashboard /></PrivateRoute>} />
-        <Route path="/add-earning" element={<PrivateRoute><AddEarning /></PrivateRoute>} />
-        <Route path="/earnings" element={<PrivateRoute><MyEarnings /></PrivateRoute>} />
-        <Route path="/admin" element={<AdminRoute><AdminPanel /></AdminRoute>} />
-        <Route path="*" element={<Navigate to="/" replace />} />
-      </Routes>
+      <AnimatePresence mode="wait">
+        <PageMotion key={location.pathname}>
+          <Routes location={location}>
+            <Route path="/" element={<Landing />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/admin/login" element={<AdminLogin />} />
+            <Route path="/verify-email/:token" element={<VerifyEmail />} />
+            <Route path="/register" element={<Register />} />
+            <Route path="/dashboard" element={<PrivateRoute><Dashboard /></PrivateRoute>} />
+            <Route path="/add-earning" element={<PrivateRoute><AddEarning /></PrivateRoute>} />
+            <Route path="/earnings" element={<PrivateRoute><MyEarnings /></PrivateRoute>} />
+            <Route path="/admin" element={<AdminRoute><AdminPanel /></AdminRoute>} />
+            <Route path="*" element={<Navigate to="/" replace />} />
+          </Routes>
+        </PageMotion>
+      </AnimatePresence>
     </>
   )
 }
