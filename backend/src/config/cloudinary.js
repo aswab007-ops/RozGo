@@ -7,7 +7,12 @@ cloudinary.config({
   api_secret: process.env.CLOUDINARY_API_SECRET,
 });
 
+const isCloudinaryConfigured = () =>
+  Boolean(process.env.CLOUDINARY_CLOUD_NAME && process.env.CLOUDINARY_API_KEY && process.env.CLOUDINARY_API_SECRET);
+
 const uploadToCloudinary = (buffer) => {
+  if (!isCloudinaryConfigured()) throw new Error('Cloudinary is not configured');
+
   return new Promise((resolve, reject) => {
     const uploadStream = cloudinary.uploader.upload_stream(
       { folder: 'gig-tracker/proofs', resource_type: 'image' },
@@ -22,4 +27,4 @@ const uploadToCloudinary = (buffer) => {
 
 const deleteFromCloudinary = (publicId) => cloudinary.uploader.destroy(publicId);
 
-module.exports = { cloudinary, uploadToCloudinary, deleteFromCloudinary };
+module.exports = { cloudinary, isCloudinaryConfigured, uploadToCloudinary, deleteFromCloudinary };

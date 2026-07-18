@@ -1,5 +1,5 @@
 const Earning = require('../models/Earning');
-const { uploadToCloudinary, deleteFromCloudinary } = require('../config/cloudinary');
+const { isCloudinaryConfigured, uploadToCloudinary, deleteFromCloudinary } = require('../config/cloudinary');
 
 const createEarning = async (req, res) => {
   try {
@@ -8,7 +8,7 @@ const createEarning = async (req, res) => {
       return res.status(400).json({ message: 'Amount, source and date are required' });
 
     let imageUrl = null, imagePublicId = null;
-    if (req.file) {
+    if (req.file && isCloudinaryConfigured()) {
       const result = await uploadToCloudinary(req.file.buffer);
       imageUrl = result.secure_url;
       imagePublicId = result.public_id;
