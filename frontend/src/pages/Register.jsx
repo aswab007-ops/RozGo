@@ -10,6 +10,7 @@ export default function Register() {
   const [showPw, setShowPw] = useState(false)
   const [loading, setLoading] = useState(false)
   const [success, setSuccess] = useState(false)
+  const [requiresVerification, setRequiresVerification] = useState(false)
 
   const set = (field) => (e) => setForm(p => ({ ...p, [field]: e.target.value }))
 
@@ -20,6 +21,7 @@ export default function Register() {
     try {
       const { data } = await axios.post('/api/auth/register', form)
       toast.success('Registration successful!')
+      setRequiresVerification(Boolean(data.requiresEmailVerification))
       setSuccess(true)
     } catch (err) {
       toast.error(err.response?.data?.message || 'Registration failed')
@@ -42,9 +44,13 @@ export default function Register() {
             <div className="w-16 h-16 bg-emerald-500/20 text-emerald-400 rounded-full flex items-center justify-center mx-auto mb-4">
               <Mail size={32} />
             </div>
-            <h2 className="text-xl font-bold text-white mb-2">Check your email</h2>
+            <h2 className="text-xl font-bold text-white mb-2">
+              {requiresVerification ? 'Check your email' : 'Account created'}
+            </h2>
             <p className="text-slate-400 text-sm mb-6">
-              We've sent a verification link to <strong>{form.email}</strong>. Please click the link to verify your account before logging in.
+              {requiresVerification
+                ? <>We've sent a verification link to <strong>{form.email}</strong>. Please click it before logging in.</>
+                : 'You can now log in with your new account.'}
             </p>
             <Link to="/login" className="btn-primary w-full block">Go to Login</Link>
           </div>

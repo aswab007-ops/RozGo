@@ -11,6 +11,7 @@ export default function Login() {
   const [form, setForm] = useState({ email: '', password: '' })
   const [showPw, setShowPw] = useState(false)
   const [loading, setLoading] = useState(false)
+  const [needsVerification, setNeedsVerification] = useState(false)
 
   const handleSubmit = async (e) => {
     e.preventDefault()
@@ -21,8 +22,20 @@ export default function Login() {
       toast.success(`Welcome back, ${data.user.name}!`)
       navigate('/dashboard')
     } catch (err) {
-      toast.error(err.response?.data?.message || 'Login failed')
+      const message = err.response?.data?.message || 'Login failed'
+      setNeedsVerification(message.toLowerCase().includes('verify'))
+      toast.error(message)
     } finally { setLoading(false) }
+  }
+
+  const resendVerification = async () => {
+    if (!form.email) return toast.error('Enter your email first')
+    try {
+      const { data } = await axios.post('/api/auth/resend-verification', { email: form.email })
+      toast.success(data.message)
+    } catch (err) {
+      toast.error(err.response?.data?.message || 'Failed to resend verification email')
+    }
   }
 
   return (
@@ -64,6 +77,12 @@ export default function Login() {
               {loading ? <span className="flex items-center justify-center gap-2"><span className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin"/>Signing in...</span> : 'Sign In'}
             </button>
           </form>
+
+          {needsVerification && (
+            <button type="button" onClick={resendVerification} className="btn-secondary w-full mt-4 py-3">
+              Resend verification email
+            </button>
+          )}
 
           <p className="text-center text-sm text-slate-500 mt-6">
             Don't have an account?{' '}
