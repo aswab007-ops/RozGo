@@ -1,0 +1,58 @@
+<svg width="1000" height="260" viewBox="0 0 1000 260" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="RozGo animated workflow">
+  <defs>
+    <linearGradient id="grad" x1="80" y1="0" x2="930" y2="260" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FBBF24"/>
+      <stop offset=".5" stop-color="#22D3EE"/>
+      <stop offset="1" stop-color="#A78BFA"/>
+    </linearGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="5" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <style>
+      .bg { fill:#070B13; }
+      .card { fill:rgba(15,23,42,.76); stroke:rgba(226,232,240,.16); }
+      .title { font:800 22px Inter, ui-sans-serif, system-ui, sans-serif; fill:#F8FAFC; }
+      .body { font:600 14px Inter, ui-sans-serif, system-ui, sans-serif; fill:#94A3B8; }
+      .num { font:900 34px Inter, ui-sans-serif, system-ui, sans-serif; fill:#FBBF24; }
+      .trace { stroke:url(#grad); stroke-width:3; stroke-linecap:round; stroke-dasharray:14 12; animation: trace 7s linear infinite; }
+      .node { animation: bob 4s ease-in-out infinite; }
+      .node2 { animation-delay:.4s; }
+      .node3 { animation-delay:.8s; }
+      .node4 { animation-delay:1.2s; }
+      .dot { animation: pulse 1.8s ease-in-out infinite; transform-origin:center; }
+      @keyframes trace { to { stroke-dashoffset:-220; } }
+      @keyframes bob { 0%,100% { transform:translateY(0); } 50% { transform:translateY(-9px); } }
+      @keyframes pulse { 0%,100% { opacity:.45; transform:scale(.85); } 50% { opacity:1; transform:scale(1.2); } }
+    </style>
+  </defs>
+  <rect class="bg" width="1000" height="260" rx="28"/>
+  <path class="trace" d="M170 132 H354 C390 132 390 132 426 132 H614 C650 132 650 132 686 132 H838"/>
+  <g class="node">
+    <rect class="card" x="54" y="62" width="178" height="132" rx="22"/>
+    <text class="num" x="82" y="111">01</text>
+    <text class="title" x="82" y="143">Register</text>
+    <text class="body" x="82" y="168">JWT auth + email verify</text>
+  </g>
+  <g class="node node2">
+    <rect class="card" x="292" y="62" width="178" height="132" rx="22"/>
+    <text class="num" x="320" y="111">02</text>
+    <text class="title" x="320" y="143">Submit</text>
+    <text class="body" x="320" y="168">Earning + proof image</text>
+  </g>
+  <g class="node node3">
+    <rect class="card" x="530" y="62" width="178" height="132" rx="22"/>
+    <text class="num" x="558" y="111">03</text>
+    <text class="title" x="558" y="143">Verify</text>
+    <text class="body" x="558" y="168">Admin approves/rejects</text>
+  </g>
+  <g class="node node4">
+    <rect class="card" x="768" y="62" width="178" height="132" rx="22"/>
+    <text class="num" x="796" y="111">04</text>
+    <text class="title" x="796" y="143">Analyze</text>
+    <text class="body" x="796" y="168">Charts + PDF export</text>
+  </g>
+  <circle class="dot" cx="260" cy="132" r="7" fill="#FBBF24" filter="url(#glow)"/>
+  <circle class="dot" cx="498" cy="132" r="7" fill="#22D3EE" filter="url(#glow)"/>
+  <circle class="dot" cx="736" cy="132" r="7" fill="#A78BFA" filter="url(#glow)"/>
+</svg>
