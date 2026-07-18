@@ -31,13 +31,13 @@
     <rect class="card" x="54" y="62" width="178" height="132" rx="22"/>
     <text class="num" x="82" y="111">01</text>
     <text class="title" x="82" y="143">Register</text>
-    <text class="body" x="82" y="168">JWT auth + email verify</text>
+    <text class="body" x="82" y="168">Secure account setup</text>
   </g>
   <g class="node node2">
     <rect class="card" x="292" y="62" width="178" height="132" rx="22"/>
     <text class="num" x="320" y="111">02</text>
     <text class="title" x="320" y="143">Submit</text>
-    <text class="body" x="320" y="168">Earning + proof image</text>
+    <text class="body" x="320" y="168">Earning + optional proof</text>
   </g>
   <g class="node node3">
     <rect class="card" x="530" y="62" width="178" height="132" rx="22"/>
