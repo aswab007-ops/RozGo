@@ -104,7 +104,7 @@ export default function AddEarning() {
                 </div>
               ) : (
                 <label id="earn-upload" htmlFor="file-input"
-                  className="flex flex-col items-center justify-center gap-2 w-full h-28 border-2 border-dashed border-white/15 rounded-xl cursor-pointer hover:border-violet-500/50 hover:bg-violet-500/5 transition-all">
+                  className="flex flex-col items-center justify-center gap-2 w-full h-28 border-2 border-dashed border-slate-700 rounded-xl cursor-pointer hover:border-amber-400/50 hover:bg-amber-400/5 transition-all">
                   <Upload size={22} className="text-slate-500"/>
                   <span className="text-sm text-slate-500">Click to upload image (max 5MB)</span>
                   <input id="file-input" type="file" accept="image/*" className="hidden" onChange={handleFile}/>

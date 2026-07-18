@@ -23,12 +23,12 @@ export default function VerifyEmail() {
   }, [token])
 
   return (
-    <div className="min-h-screen flex items-center justify-center px-4 bg-gradient-to-br from-[#060b18] via-[#0d1526] to-[#060b18]">
+    <div className="min-h-screen flex items-center justify-center px-4">
       <div className="w-full max-w-md animate-slide-up">
         <div className="card text-center py-10">
           {status === 'loading' && (
             <>
-              <Loader2 size={48} className="text-violet-500 animate-spin mx-auto mb-4" />
+              <Loader2 size={48} className="text-amber-300 animate-spin mx-auto mb-4" />
               <h1 className="text-xl font-bold text-white mb-2">Verifying your email...</h1>
               <p className="text-slate-400 text-sm">Please wait a moment.</p>
             </>

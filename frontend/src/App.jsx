@@ -12,9 +12,15 @@ import AdminPanel from './pages/AdminPanel'
 import AdminLogin from './pages/AdminLogin'
 import VerifyEmail from './pages/VerifyEmail'
 
+const Loader = () => (
+  <div className="flex items-center justify-center min-h-screen">
+    <div className="w-8 h-8 border-2 border-amber-400 border-t-transparent rounded-full animate-spin"/>
+  </div>
+)
+
 const PrivateRoute = ({ children }) => {
   const { user, loading } = useAuth()
-  if (loading) return <div className="flex items-center justify-center min-h-screen"><div className="w-8 h-8 border-2 border-violet-500 border-t-transparent rounded-full animate-spin"/></div>
+  if (loading) return <Loader />
   if (!user) return <Navigate to="/login" replace />
   if (user.role === 'admin') return <Navigate to="/admin" replace />
   return children
@@ -22,7 +28,7 @@ const PrivateRoute = ({ children }) => {
 
 const AdminRoute = ({ children }) => {
   const { user, loading } = useAuth()
-  if (loading) return <div className="flex items-center justify-center min-h-screen"><div className="w-8 h-8 border-2 border-violet-500 border-t-transparent rounded-full animate-spin"/></div>
+  if (loading) return <Loader />
   if (!user) return <Navigate to="/admin/login" replace />
   if (user.role !== 'admin') return <Navigate to="/dashboard" replace />
   return children
@@ -53,9 +59,9 @@ export default function App() {
     <AuthProvider>
       <BrowserRouter>
         <Toaster position="top-right" toastOptions={{
-          style: { background: '#111d35', color: '#f1f5f9', border: '1px solid rgba(255,255,255,0.1)' },
+          style: { background: '#0f172a', color: '#f8fafc', border: '1px solid rgba(148,163,184,0.18)' },
           success: { iconTheme: { primary: '#10b981', secondary: '#fff' } },
-          error:   { iconTheme: { primary: '#f43f5e', secondary: '#fff' } }
+          error: { iconTheme: { primary: '#f43f5e', secondary: '#fff' } }
         }} />
         <AppRoutes />
       </BrowserRouter>

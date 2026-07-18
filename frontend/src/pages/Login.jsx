@@ -26,11 +26,11 @@ export default function Login() {
   }
 
   return (
-    <div className="min-h-screen flex items-center justify-center px-4 bg-gradient-to-br from-[#060b18] via-[#0d1526] to-[#060b18]">
+    <div className="min-h-screen flex items-center justify-center px-4">
       <div className="w-full max-w-md animate-slide-up">
         <div className="text-center mb-8">
-          <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-violet-500 to-cyan-500 flex items-center justify-center mx-auto mb-4">
-            <TrendingUp size={22} className="text-white"/>
+          <div className="w-12 h-12 rounded-2xl bg-amber-400 flex items-center justify-center mx-auto mb-4">
+            <TrendingUp size={22} className="text-slate-950"/>
           </div>
           <h1 className="text-2xl font-bold text-white">Welcome back</h1>
           <p className="text-slate-400 text-sm mt-1">Sign in to your RozGo account</p>
@@ -67,7 +67,7 @@ export default function Login() {
 
           <p className="text-center text-sm text-slate-500 mt-6">
             Don't have an account?{' '}
-            <Link to="/register" className="text-violet-400 hover:text-violet-300 font-medium">Create one</Link>
+            <Link to="/register" className="text-amber-300 hover:text-amber-200 font-medium">Create one</Link>
           </p>
         </div>
       </div>

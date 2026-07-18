@@ -11,12 +11,12 @@ export default function EarningCard({ earning, onDelete }) {
   const Icon = cfg.Icon
 
   return (
-    <div className="card group animate-fade-in hover:border-violet-500/30">
+    <div className="card group animate-fade-in">
       <div className="flex justify-between items-start gap-4">
         {/* Amount */}
         <div className="flex items-start gap-3">
-          <div className="w-10 h-10 rounded-xl bg-violet-600/15 flex items-center justify-center flex-shrink-0 mt-0.5">
-            <DollarSign size={18} className="text-violet-400"/>
+          <div className="w-10 h-10 rounded-xl bg-amber-400/10 flex items-center justify-center flex-shrink-0 mt-0.5">
+            <DollarSign size={18} className="text-amber-300"/>
           </div>
           <div>
             <p className="text-2xl font-bold text-white">Rs {earning.amount.toLocaleString()}</p>
@@ -45,9 +45,9 @@ export default function EarningCard({ earning, onDelete }) {
 
       {/* Proof image */}
       {earning.imageUrl && (
-        <div className="mt-3 pt-3 border-t border-white/6">
+        <div className="mt-3 pt-3 border-t border-slate-800">
           <a href={earning.imageUrl} target="_blank" rel="noreferrer"
-            className="flex items-center gap-2 text-xs text-violet-400 hover:text-violet-300 transition-colors">
+            className="flex items-center gap-2 text-xs text-amber-300 hover:text-amber-200 transition-colors">
             <Image size={13}/>View Proof
           </a>
         </div>
@@ -55,7 +55,7 @@ export default function EarningCard({ earning, onDelete }) {
 
       {/* Admin comment */}
       {earning.adminComment && (
-        <div className="mt-3 pt-3 border-t border-white/6">
+        <div className="mt-3 pt-3 border-t border-slate-800">
           <p className="text-xs text-slate-400"><span className="text-slate-300 font-medium">Admin note:</span> {earning.adminComment}</p>
         </div>
       )}

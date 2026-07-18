@@ -10,12 +10,12 @@ export default function EarningsChart({ monthlyBreakdown }) {
     datasets: [{
       label: 'Approved Earnings (Rs)',
       data: monthlyBreakdown.map(m => m.total),
-      backgroundColor: 'rgba(139,92,246,0.5)',
-      borderColor: 'rgba(139,92,246,1)',
-      borderWidth: 2,
+      backgroundColor: 'rgba(245,158,11,0.66)',
+      borderColor: 'rgba(251,191,36,1)',
+      borderWidth: 1,
       borderRadius: 8,
       borderSkipped: false,
-      hoverBackgroundColor: 'rgba(139,92,246,0.75)'
+      hoverBackgroundColor: 'rgba(251,191,36,0.82)'
     }]
   }
 
@@ -25,23 +25,28 @@ export default function EarningsChart({ monthlyBreakdown }) {
     plugins: {
       legend: { display: false },
       tooltip: {
-        backgroundColor: '#111d35',
-        borderColor: 'rgba(255,255,255,0.1)',
+        backgroundColor: '#0f172a',
+        borderColor: 'rgba(148,163,184,0.18)',
         borderWidth: 1,
         titleColor: '#f1f5f9',
-        bodyColor: '#94a3b8',
+        bodyColor: '#cbd5e1',
         callbacks: { label: ctx => ` Rs ${ctx.parsed.y.toLocaleString()}` }
       }
     },
     scales: {
-      x: { grid: { color: 'rgba(255,255,255,0.04)' }, ticks: { color: '#64748b', font: { size: 12 } } },
-      y: { grid: { color: 'rgba(255,255,255,0.04)' }, ticks: { color: '#64748b', font: { size: 12 }, callback: v => `Rs ${v.toLocaleString()}` }, beginAtZero: true }
+      x: { grid: { color: 'rgba(148,163,184,0.08)' }, ticks: { color: '#94a3b8', font: { size: 12 } } },
+      y: { grid: { color: 'rgba(148,163,184,0.08)' }, ticks: { color: '#94a3b8', font: { size: 12 }, callback: v => `Rs ${v.toLocaleString()}` }, beginAtZero: true }
     }
   }
 
   return (
     <div className="card">
-      <h3 className="text-base font-semibold text-white mb-4">Monthly Earnings (Last 6 Months)</h3>
+      <div className="mb-4 flex items-center justify-between gap-3">
+        <div>
+          <h3 className="text-base font-semibold text-white">Monthly earnings</h3>
+          <p className="text-xs text-slate-500">Approved entries, last 6 months</p>
+        </div>
+      </div>
       <div style={{ height: 240 }}>
         <Bar data={data} options={options}/>
       </div>

@@ -15,20 +15,20 @@ export default function Navbar() {
   const navLink = (to, label, Icon) => (
     <Link key={to} to={to} onClick={() => setOpen(false)}
       className={`flex items-center gap-2 px-3 py-2 rounded-lg text-sm font-medium transition-all duration-200
-        ${isActive(to) ? 'bg-violet-600/20 text-violet-400 border border-violet-500/30' : 'text-slate-400 hover:text-white hover:bg-white/5'}`}>
+        ${isActive(to) ? 'bg-amber-400/10 text-amber-300 border border-amber-400/30' : 'text-slate-400 hover:text-white hover:bg-slate-800/70'}`}>
       <Icon size={16}/>{label}
     </Link>
   )
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 glass-dark border-b border-white/6">
+    <nav className="fixed top-0 left-0 right-0 z-50 glass-dark border-b border-slate-800/80">
       <div className="max-w-7xl mx-auto px-4 h-16 flex items-center justify-between">
         {/* Logo */}
         <Link to="/" className="flex items-center gap-2 font-bold text-white">
-          <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-violet-500 to-cyan-500 flex items-center justify-center">
-            <TrendingUp size={16} className="text-white"/>
+          <div className="w-8 h-8 rounded-lg bg-amber-400 flex items-center justify-center">
+            <TrendingUp size={16} className="text-slate-950"/>
           </div>
-          <span>Roz<span className="text-violet-400">Go</span></span>
+          <span>Roz<span className="text-amber-300">Go</span></span>
         </Link>
 
         {/* Desktop Nav */}
@@ -59,14 +59,14 @@ export default function Navbar() {
         </div>
 
         {/* Mobile toggle */}
-        <button className="md:hidden text-slate-400 hover:text-white" onClick={() => setOpen(!open)}>
+        <button className="md:hidden text-slate-400 hover:text-white rounded-lg p-2" onClick={() => setOpen(!open)} aria-label="Toggle navigation">
           {open ? <X size={22}/> : <Menu size={22}/>}
         </button>
       </div>
 
       {/* Mobile Menu */}
       {open && (
-        <div className="md:hidden border-t border-white/6 px-4 py-4 flex flex-col gap-2 glass-dark animate-fade-in">
+        <div className="md:hidden border-t border-slate-800 px-4 py-4 flex flex-col gap-2 glass-dark animate-fade-in">
           {user ? (
             <>
               {user.role === 'worker' && navLink('/dashboard', 'Dashboard', LayoutDashboard)}

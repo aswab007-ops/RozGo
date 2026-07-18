@@ -26,17 +26,17 @@ export default function AdminLogin() {
   }
 
   return (
-    <div className="min-h-screen flex items-center justify-center px-4 bg-gradient-to-br from-[#060b18] via-[#0d1526] to-[#060b18]">
+    <div className="min-h-screen flex items-center justify-center px-4">
       <div className="w-full max-w-md animate-slide-up">
         <div className="text-center mb-8">
-          <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-rose-500 to-orange-500 flex items-center justify-center mx-auto mb-4 shadow-lg shadow-rose-500/20">
+          <div className="w-12 h-12 rounded-2xl bg-rose-500 flex items-center justify-center mx-auto mb-4">
             <ShieldCheck size={22} className="text-white"/>
           </div>
           <h1 className="text-2xl font-bold text-white">Admin Portal</h1>
           <p className="text-rose-400 text-sm mt-1 font-medium">Restricted Access</p>
         </div>
 
-        <div className="card border-rose-500/20 shadow-xl shadow-rose-500/5">
+        <div className="card border-rose-500/20">
           <form onSubmit={handleSubmit} className="flex flex-col gap-5">
             <div>
               <label className="text-xs font-medium text-slate-400 mb-1.5 block">Admin Email</label>
@@ -61,7 +61,7 @@ export default function AdminLogin() {
               </div>
             </div>
             <button id="admin-submit" type="submit" disabled={loading} 
-              className="bg-rose-600 hover:bg-rose-500 text-white font-semibold px-6 py-3 rounded-xl transition-all duration-200 hover:shadow-lg hover:shadow-rose-500/25 mt-1 w-full">
+              className="btn-danger px-6 py-3 mt-1 w-full">
               {loading ? <span className="flex items-center justify-center gap-2"><span className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin"/>Authenticating...</span> : 'Secure Login'}
             </button>
           </form>

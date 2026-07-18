@@ -27,11 +27,11 @@ export default function Register() {
   }
 
   return (
-    <div className="min-h-screen flex items-center justify-center px-4 py-24 bg-gradient-to-br from-[#060b18] via-[#0d1526] to-[#060b18]">
+    <div className="min-h-screen flex items-center justify-center px-4 py-24">
       <div className="w-full max-w-md animate-slide-up">
         <div className="text-center mb-8">
-          <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-violet-500 to-cyan-500 flex items-center justify-center mx-auto mb-4">
-            <TrendingUp size={22} className="text-white"/>
+          <div className="w-12 h-12 rounded-2xl bg-amber-400 flex items-center justify-center mx-auto mb-4">
+            <TrendingUp size={22} className="text-slate-950"/>
           </div>
           <h1 className="text-2xl font-bold text-white">Create an account</h1>
           <p className="text-slate-400 text-sm mt-1">Start tracking your gig income today</p>
@@ -86,7 +86,7 @@ export default function Register() {
             </form>
             <p className="text-center text-sm text-slate-500 mt-6">
               Already have an account?{' '}
-              <Link to="/login" className="text-violet-400 hover:text-violet-300 font-medium">Sign in</Link>
+              <Link to="/login" className="text-amber-300 hover:text-amber-200 font-medium">Sign in</Link>
             </p>
           </div>
         )}

@@ -60,7 +60,7 @@ export default function MyEarnings() {
           {FILTERS.map(f => (
             <button key={f} onClick={() => setFilter(f)}
               className={`px-3 py-2 rounded-lg text-xs font-medium capitalize transition-all
-                ${filter === f ? 'bg-violet-600/20 text-violet-400 border border-violet-500/30' : 'bg-white/5 text-slate-400 hover:bg-white/8 border border-transparent'}`}>
+                ${filter === f ? 'tab-active' : 'tab-idle'}`}>
               {f}
             </button>
           ))}
@@ -69,11 +69,13 @@ export default function MyEarnings() {
 
       {loading ? (
         <div className="flex items-center justify-center py-24">
-          <div className="w-10 h-10 border-2 border-violet-500 border-t-transparent rounded-full animate-spin"/>
+          <div className="w-10 h-10 border-2 border-amber-400 border-t-transparent rounded-full animate-spin"/>
         </div>
       ) : filtered.length === 0 ? (
         <div className="card text-center py-16 animate-fade-in">
-          <p className="text-4xl mb-3">📭</p>
+          <div className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-slate-800 text-slate-400">
+            <Filter size={20}/>
+          </div>
           <p className="text-slate-400">No earnings found</p>
           <Link to="/add-earning" className="btn-primary inline-flex items-center gap-2 mt-4 text-sm">
             <PlusCircle size={15}/>Add your first entry
