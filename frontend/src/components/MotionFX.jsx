@@ -4,22 +4,12 @@ const spring = { type: 'spring', stiffness: 260, damping: 24, mass: 0.6 }
 
 export function AmbientBackground() {
   const reduce = useReducedMotion()
-  const mouseX = useMotionValue(0)
-  const mouseY = useMotionValue(0)
-  const smoothX = useSpring(mouseX, { stiffness: 90, damping: 28 })
-  const smoothY = useSpring(mouseY, { stiffness: 90, damping: 28 })
   const { scrollYProgress } = useScroll()
   const scaleX = useSpring(scrollYProgress, { stiffness: 120, damping: 24 })
 
-  const onMouseMove = (event) => {
-    mouseX.set(event.clientX)
-    mouseY.set(event.clientY)
-  }
-
   return (
-    <div className="ambient-stage" onMouseMove={onMouseMove} aria-hidden="true">
+    <div className="ambient-stage" aria-hidden="true">
       <motion.div className="scroll-progress" style={{ scaleX }} />
-      <motion.div className="cursor-spotlight" style={{ x: smoothX, y: smoothY }} />
       <div className="aurora-field" />
       <motion.div
         className="orb orb-one"
@@ -44,10 +34,10 @@ export function AmbientBackground() {
 export function PageMotion({ children }) {
   return (
     <motion.main
-      initial={{ opacity: 0, y: 18, filter: 'blur(12px)' }}
-      animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
-      exit={{ opacity: 0, y: -12, filter: 'blur(10px)' }}
-      transition={{ duration: 0.42, ease: [0.22, 1, 0.36, 1] }}
+      initial={{ opacity: 0, y: 14 }}
+      animate={{ opacity: 1, y: 0 }}
+      exit={{ opacity: 0, y: -10 }}
+      transition={{ duration: 0.34, ease: [0.22, 1, 0.36, 1] }}
     >
       {children}
     </motion.main>
@@ -58,8 +48,8 @@ export function Reveal({ children, className = '', delay = 0, y = 28 }) {
   return (
     <motion.div
       className={className}
-      initial={{ opacity: 0, y, filter: 'blur(14px)' }}
-      whileInView={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+      initial={{ opacity: 0, y }}
+      whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: '-80px' }}
       transition={{ duration: 0.7, delay, ease: [0.22, 1, 0.36, 1] }}
     >
@@ -77,8 +67,8 @@ export function SplitText({ text, className = '' }) {
             <motion.span
               className="inline-block"
               key={`${char}-${charIndex}`}
-              initial={{ opacity: 0, y: 18, rotateX: -70, filter: 'blur(8px)' }}
-              animate={{ opacity: 1, y: 0, rotateX: 0, filter: 'blur(0px)' }}
+              initial={{ opacity: 0, y: 18, rotateX: -70 }}
+              animate={{ opacity: 1, y: 0, rotateX: 0 }}
               transition={{ ...spring, delay: 0.018 * (wordIndex * 7 + charIndex) }}
             >
               {char}

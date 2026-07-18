@@ -30,16 +30,16 @@ export default function Landing() {
         <motion.div style={{ y: heroY }} className="mx-auto grid max-w-6xl items-center gap-12 lg:grid-cols-[1.02fr_.98fr]">
           <div className="relative z-10">
             <motion.div
-              className="mb-6 inline-flex items-center gap-2 rounded-full border border-amber-300/25 bg-slate-950/35 px-4 py-1.5 text-xs font-semibold text-amber-200 backdrop-blur-2xl"
-              initial={{ opacity: 0, y: 16, filter: 'blur(10px)' }}
-              animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+              className="mb-6 inline-flex items-center gap-2 rounded-full border border-amber-300/25 bg-slate-950/35 px-4 py-1.5 text-xs font-semibold text-amber-200 backdrop-blur-md"
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
             >
               <Sparkles size={14} />
               Verified income records for independent workers
             </motion.div>
 
-            <h1 className="max-w-4xl text-5xl font-extrabold leading-[0.96] text-white md:text-7xl">
+            <h1 className="hero-headline max-w-4xl text-5xl font-extrabold leading-[0.96] text-white md:text-7xl">
               <SplitText text="Turn scattered gig payments into trusted income history." />
             </h1>
 
@@ -68,7 +68,7 @@ export default function Landing() {
             </FloatingBadge>
 
             <TiltCard className="absolute inset-x-0 top-8 mx-auto max-w-md">
-              <div className="relative z-10 rounded-[1.35rem] border border-slate-700/70 bg-slate-950/55 p-5 backdrop-blur-2xl">
+              <div className="relative z-10 rounded-[1.35rem] border border-slate-700/70 bg-slate-950/55 p-5 backdrop-blur-lg">
                 <svg className="pointer-events-none absolute inset-3 h-[calc(100%-1.5rem)] w-[calc(100%-1.5rem)]" viewBox="0 0 460 520" fill="none">
                   <rect className="outline-trace" x="2" y="2" width="456" height="516" rx="28" stroke="rgba(251,191,36,.58)" strokeWidth="2" />
                 </svg>
@@ -83,9 +83,9 @@ export default function Landing() {
                   {entries.map(([source, amount, status], index) => (
                     <motion.div
                       key={source}
-                      className="group flex items-center justify-between rounded-xl border border-slate-800 bg-slate-900/50 p-4 backdrop-blur-xl"
-                      initial={{ opacity: 0, x: 36, filter: 'blur(10px)' }}
-                      animate={{ opacity: 1, x: 0, filter: 'blur(0px)' }}
+                      className="group flex items-center justify-between rounded-xl border border-slate-800 bg-slate-900/50 p-4 backdrop-blur-sm"
+                      initial={{ opacity: 0, x: 36 }}
+                      animate={{ opacity: 1, x: 0 }}
                       transition={{ delay: 0.55 + index * 0.12, type: 'spring', stiffness: 180, damping: 20 }}
                       whileHover={{ x: 8, scale: 1.015 }}
                     >
@@ -104,17 +104,6 @@ export default function Landing() {
                 </div>
               </div>
             </TiltCard>
-
-            <motion.div
-              className="absolute bottom-8 left-4 h-36 w-56 rounded-[1.5rem] border border-cyan-300/20 bg-cyan-300/10 backdrop-blur-2xl"
-              animate={{ y: [0, -18, 0], rotate: [-4, -1, -4] }}
-              transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut' }}
-            />
-            <motion.div
-              className="absolute bottom-24 right-6 h-28 w-44 rounded-[1.5rem] border border-amber-300/20 bg-amber-300/10 backdrop-blur-2xl"
-              animate={{ y: [0, 16, 0], rotate: [5, 2, 5] }}
-              transition={{ duration: 5.5, repeat: Infinity, ease: 'easeInOut' }}
-            />
           </motion.div>
         </motion.div>
       </section>
@@ -185,8 +174,8 @@ export default function Landing() {
                   <motion.div
                     key={step}
                     className="relative flex items-center gap-4 overflow-hidden rounded-xl border border-slate-800 bg-slate-950/40 px-5 py-4"
-                    initial={{ opacity: 0, x: i % 2 ? 60 : -60, filter: 'blur(12px)' }}
-                    whileInView={{ opacity: 1, x: 0, filter: 'blur(0px)' }}
+                    initial={{ opacity: 0, x: i % 2 ? 60 : -60 }}
+                    whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: false, amount: 0.55 }}
                     transition={{ type: 'spring', stiffness: 180, damping: 22 }}
                     whileHover={{ scale: 1.018, x: 8 }}
