@@ -20,17 +20,25 @@ const register = async (req, res) => {
     if (await User.findOne({ email }))
       return res.status(400).json({ message: 'User already exists with this email' });
 
-    // Generate JWT verification token (15 mins) using EXACT SAME secret
-    const verificationToken = jwt.sign({ email }, process.env.JWT_SECRET, { expiresIn: '15m' });
+    const hasSmtp = process.env.SMTP_HOST && process.env.SMTP_USER;
+    const verificationToken = hasSmtp
+      ? jwt.sign({ email }, process.env.JWT_SECRET, { expiresIn: '15m' })
+      : undefined;
 
     const user = await User.create({ 
       name, 
       email, 
       password, 
       role: 'worker',
-      isVerified: false,
+      isVerified: !hasSmtp,
       verificationToken
     });
+
+    if (!hasSmtp) {
+      return res.status(201).json({
+        message: 'Registration successful! You can now log in.',
+      });
+    }
 
     // Send verification email
     const verifyUrl = `${process.env.CLIENT_URL || 'http://localhost:5173'}/verify-email/${verificationToken}`;
