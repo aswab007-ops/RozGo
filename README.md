@@ -257,12 +257,6 @@ Do not commit real secrets.
 
 ---
 
-## Interview Pitch
-
-> RozGo is a full-stack income verification platform for gig workers. Workers submit earning records with optional proof screenshots, admins verify or reject them, and approved entries power charts, stats, and PDF exports. I built it with React, Express, MongoDB Atlas, JWT auth, Cloudinary uploads, SMTP email verification, and deployed it on Vercel.
-
----
-
 ## Technical Talking Points
 
 ### Why Cloudinary?
