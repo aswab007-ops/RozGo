@@ -9,7 +9,9 @@
 </p>
 
 <p align="center">
-  <a href="https://frontend-eight-drab-56.vercel.app"><strong>Visit Website</strong></a>
+  <a href="https://frontend-eight-drab-56.vercel.app">
+    <img src="./assets/readme/visit-button.svg" alt="Visit Website" width="230" />
+  </a>
 </p>
 
 <p align="center">

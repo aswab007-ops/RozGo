@@ -1,0 +1,35 @@
+<svg width="230" height="54" viewBox="0 0 230 54" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Visit Website">
+  <defs>
+    <linearGradient id="border" x1="10" y1="0" x2="220" y2="54" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FBBF24"/>
+      <stop offset=".5" stop-color="#22D3EE"/>
+      <stop offset="1" stop-color="#A78BFA"/>
+    </linearGradient>
+    <linearGradient id="shine" x1="-20" y1="0" x2="70" y2="54" gradientUnits="userSpaceOnUse">
+      <stop stop-color="white" stop-opacity="0"/>
+      <stop offset=".5" stop-color="white" stop-opacity=".24"/>
+      <stop offset="1" stop-color="white" stop-opacity="0"/>
+    </linearGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="5" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <style>
+      .shell { fill: rgba(15,23,42,.82); stroke: url(#border); }
+      .label { font: 800 16px Inter, ui-sans-serif, system-ui, sans-serif; fill: #F8FAFC; letter-spacing: .2px; }
+      .arrow { stroke: #FBBF24; stroke-width: 2.4; stroke-linecap: round; stroke-linejoin: round; }
+      .dot { fill: #34D399; animation: pulse 2.2s ease-in-out infinite; transform-origin: center; }
+      .sweep { animation: sweep 4.2s ease-in-out infinite; }
+      @keyframes sweep { 0%,28% { transform: translateX(-90px); opacity: 0; } 45% { opacity: 1; } 74%,100% { transform: translateX(250px); opacity: 0; } }
+      @keyframes pulse { 0%,100% { opacity:.55; } 50% { opacity:1; } }
+    </style>
+  </defs>
+  <rect x="2" y="2" width="226" height="50" rx="25" class="shell" stroke-width="2"/>
+  <rect class="sweep" x="-50" y="2" width="48" height="50" fill="url(#shine)" transform="skewX(-18)"/>
+  <circle class="dot" cx="31" cy="27" r="5" filter="url(#glow)"/>
+  <text class="label" x="48" y="33">Visit Website</text>
+  <path class="arrow" d="M181 27H199M193 21L199 27L193 33"/>
+</svg>
